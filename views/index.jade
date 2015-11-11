@@ -2,3 +2,10 @@ html
     head
     body
         div Hello World
+        each post in posts
+            li= post.title || post.comment_text
+            button(onClick="javascript:removePost(#{post.objectID})") remove
+    script.
+        function removePost(objectId) {
+            fetch('post/' + objectId, {method: 'DELETE'});
+        }
