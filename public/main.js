@@ -1,8 +1,9 @@
 /*global $*/
 $('button').on('click', function (evt) {
     var id = this.attributes['data-id'].value;
-    fetch('/post/' + id, {
-        method: 'DELETE'
+    $.ajax({
+        url: '/post/' + id,
+        type: 'DELETE'
     }).then(function () {
         location.reload();
     });

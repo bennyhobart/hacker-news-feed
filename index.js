@@ -13,16 +13,14 @@ process.on('SIGINT', () => mongoose.connection.close(() => {
     process.exit(0);
 }));
 
-//Set refresh time
-posts.refresh();
-setInterval(posts.refresh, 60 * 60 * 1000);
-
-//Configure App
+//Configure Express
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('express-less-middleware')());
+
+//Configure Routes
 app.get('/', (req, res) => {
     posts.getLatestPosts()
         .then((posts) => {
@@ -39,6 +37,10 @@ app.get('/refresh', function(req, res) {
     posts.refresh();
     res.send('REFRESH');
 });
+
+//Set refresh time
+posts.refresh();
+setInterval(posts.refresh, parseInt(process.env.REFRESH_INTERVAL) || 3600000);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => debug(`listening on port ${port}`));

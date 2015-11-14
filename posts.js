@@ -58,7 +58,7 @@ function getLatestPosts() {
 /**
  * removes post with give objectID as deleted in db
  * @param  {String} objectID
- * @return {Promise}
+ * @return {Promise} - resolves when marked as deleted, rejects with Mongoose error
  */
 function remove(objectID) {
     return Post.findOneAndUpdate({objectID}, {

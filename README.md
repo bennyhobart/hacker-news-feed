@@ -9,7 +9,7 @@ node index.js
 ````
 public/ - for public assets
 views/ - for jade views to be rendered by express
-posts.js - the posts Model
+posts.js - the posts model
 index.js - contains mongo and express configuration/routing, also the entry point of the app
 ````
 
@@ -21,4 +21,6 @@ API_URL - the url for the api to get data from
     default: "http://hn.algolia.com/api/v1/search_by_date?query=nodejs"
 MONGO_URI - the uri to connect to mongod over
     default: "mongodb://localhost/hacker-news-feed"
+REFRESH_INTERVAL - the interval (in ms) at which the app fetches the API_URL for data
+    default: 3600000 (1 hour)
 ````
