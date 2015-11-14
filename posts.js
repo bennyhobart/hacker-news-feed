@@ -39,7 +39,7 @@ function savePost(post) {
  */
 function refresh() {
     debug('refreshing posts');
-    return fetch('http://hn.algolia.com/api/v1/search_by_date?query=nodejs')
+    return fetch(process.env.API_URL || 'http://hn.algolia.com/api/v1/search_by_date?query=nodejs')
         .then(res => res.json())
         .then(json => json.hits)
         .then(posts => posts.forEach(savePost));

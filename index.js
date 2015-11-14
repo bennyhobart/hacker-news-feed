@@ -6,7 +6,7 @@ const express = require('express'),
     posts = require('./posts');
 
 //Configure Mongoose
-const mongoURL = process.env.MONGO_URL || 'mongodb://localhost/hacker-news-feed';
+const mongoURL = process.env.MONGO_URI || 'mongodb://localhost/hacker-news-feed';
 mongoose.connect(mongoURL);
 process.on('SIGINT', () => mongoose.connection.close(() => {
     debug('mongoose disconnected');
