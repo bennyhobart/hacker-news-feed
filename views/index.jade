@@ -1,32 +1,25 @@
 html
     head
-        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+        link(rel="stylesheet", href="style.css")
 
     body
-        div.container
-            div.jumbotron
-                h1 HN Feed
+        div.jumbotron.jumbotron-inverse
+            div.container
+                h1
+                    strong HN Feed
                 h2 We <3 hacker news!
+        div.container
             table.table.table-hover
                 tbody
                     each post in posts
-                        tr
+                        tr(data-href="#{post.story_url || post.url}")
                             td #{post.story_title || post.title}
                                 small  - #{post.author} -
                             td
                                 =moment(post.created_at).calendar()
-                            td
-                                button(data-id="#{post.objectID}")
+                            td(style="width: 80px;")
+                                button.visible-hover(data-id="#{post.objectID}")
                                     i.glyphicon.glyphicon-trash
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
-
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
-    script.
-        var buttons = $('button').on('click', function (evt) {
-            var id = this.attributes['data-id'].value;
-            fetch('/post/' + id, {
-                    method: 'DELETE'
-                }).then(function () {
-                    location.reload();
-                });
-        });
+    script(src="/main.js")

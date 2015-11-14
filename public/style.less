@@ -1,0 +1,33 @@
+@import "./vendor/bootstrap/index";
+@table-bg-hover: #fafafa;
+@table-border-color: #ccc;
+@table-cell-padding: 20px;
+@gray-light: #999;
+
+body {
+    font-family: 'Comic Sans MS';
+}
+small {
+    color: @gray-light;
+}
+
+.jumbotron {
+    &.jumbotron-inverse {
+        background-color: #333333;
+        color: white;
+    }
+}
+
+.table-hover {
+    tr {
+        cursor: pointer;
+        .visible-hover {
+            display: none;
+        }
+        &:hover {
+            .visible-hover {
+                display: initial;
+            }
+        }
+    }
+}

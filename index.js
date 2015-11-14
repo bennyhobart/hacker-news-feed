@@ -13,7 +13,6 @@ process.on('SIGINT', () => mongoose.connection.close(() => {
     process.exit(0);
 }));
 
-
 //Set refresh time
 posts.refresh();
 setInterval(posts.refresh, 60 * 60 * 1000);
@@ -23,6 +22,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('express-less-middleware')());
 app.get('/', (req, res) => {
     posts.getLatestPosts()
         .then((posts) => {
