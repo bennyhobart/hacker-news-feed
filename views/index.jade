@@ -7,7 +7,7 @@ html
             div.container
                 h1
                     strong HN Feed
-                h2 We <3 hacker news!
+                p We <3 hacker news!
         div.container
             table.table.table-hover
                 tbody
@@ -18,7 +18,7 @@ html
                             td
                                 =moment(post.created_at).calendar()
                             td(style="width: 80px;")
-                                button.visible-hover(data-id="#{post.objectID}")
+                                button.btn.btn-transparent.visible-hover(data-id="#{post.objectID}")
                                     i.glyphicon.glyphicon-trash
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")

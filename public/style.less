@@ -12,6 +12,7 @@ small {
 }
 
 .jumbotron {
+    margin-bottom: 0;
     &.jumbotron-inverse {
         background-color: #333333;
         color: white;
@@ -21,13 +22,31 @@ small {
 .table-hover {
     tr {
         cursor: pointer;
+        &:first-child {
+            td {
+                border-top: none;
+            }
+        }
+
         .visible-hover {
-            display: none;
+            visibility: hidden;
         }
         &:hover {
             .visible-hover {
-                display: initial;
+                visibility: initial;
             }
+        }
+    }
+}
+
+.btn {
+    &.btn-transparent {
+        background-color: transparent;
+        &:hover {
+            background-color: @gray-lighter;
+        }
+        &:active {
+            background-color: @gray-light;
         }
     }
 }
