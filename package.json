@@ -2,13 +2,14 @@
   "name": "hacker-news-feed",
   "version": "1.0.0",
   "description": "A simple application for pulling the latest threads from hacker news and deleting them",
-  "main": "index.js",
   "scripts": {
+    "main": "DEBUG=expressapp, nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Benedict Hobart <hobart.benedict@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "debug": "2.2.0",
     "express": "4.13.3",
     "isomorphic-fetch": "2.2.0",
     "jade": "1.11.0",
