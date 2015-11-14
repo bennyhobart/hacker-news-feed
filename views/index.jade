@@ -4,25 +4,29 @@ html
 
     body
         div.container
-            h1 HN Feed
-            h2 We <3 hacker news!
-            ul
-                each post in posts
-                    li= post.title || post.story_title
-                    button(data-id="#{post.objectID}") remove
+            div.jumbotron
+                h1 HN Feed
+                h2 We <3 hacker news!
+            table.table.table-hover
+                tbody
+                    each post in posts
+                        tr
+                            td #{post.story_title || post.title}
+                                small  - #{post.author} -
+                            td
+                                =moment(post.created_at).calendar()
+                            td
+                                button(data-id="#{post.objectID}")
+                                    i.glyphicon.glyphicon-trash
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
 
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
     script.
-        var buttons = document.querySelectorAll('button[data-id');
-        for (var i = 0; i < buttons.length; ++i) {
-            buttons[i].addEventListener('click', function(evt) {
-                var id = evt.target.attributes['data-id'].value;
-                fetch('/post/' + id, {
+        var buttons = $('button').on('click', function (evt) {
+            var id = this.attributes['data-id'].value;
+            fetch('/post/' + id, {
                     method: 'DELETE'
                 }).then(function () {
                     location.reload();
                 });
-            });
-        }
-
+        });

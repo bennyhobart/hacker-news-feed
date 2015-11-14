@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
     posts.getLatestPosts()
         .then((posts) => {
-            res.render('index', {posts: posts});
+            res.render('index', {moment: require('moment'), posts: posts});
         });
 });
 
