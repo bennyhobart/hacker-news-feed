@@ -20,13 +20,13 @@ const Post = mongoose.model('Post', {
     }
 });
 
-
 /**
  * saves the given post to the database
+ * does not save post if it is missing a title or missing a url
  * @param  {object} post
  */
 function savePost(post) {
-    if(!post.story_title && !post.title) {
+    if((!post.story_title && !post.title) || (!post.url && !post.story_url)) {
         debug(`did not add post ${post.objectID}`);
         return;
     }
