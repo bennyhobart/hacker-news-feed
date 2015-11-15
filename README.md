@@ -1,9 +1,13 @@
 #Hacker News Feed
 
 ##Running the APP
-````
-node index.js
-````
++ Install Dependencies
+`npm install`
++ Get your hands on a mongo database ([mongolab](https://mongolab.com/))
++ Setup Environement variables
+`export MONGO_URI=*point to mongod*`
++ Run App
+`npm run main`
 
 ##File Structure
 ````
@@ -13,7 +17,7 @@ posts.js - the posts model
 index.js - contains mongo and express configuration/routing, also the entry point of the app
 ````
 
-##ENV
+##Environment Variables
 ````
 PORT - the port for express to listen on
     default: 3000
